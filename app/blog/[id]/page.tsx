@@ -12,7 +12,7 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { id } = await params;
 
-  const res = await fetch("http://localhost:3000/api/blogs");
+  const res = await fetch("https://nextjs-blog-psi-two-58.vercel.app/api/blogs");
   const jsonData = await res.json();
 
   const selected = jsonData.blogs.find(
@@ -34,7 +34,7 @@ export async function generateMetadata({
 async function Page({ params }: PageProps) {
   const { id } = await params;
 
-  const res = await fetch("http://localhost:3000/api/blogs");
+  const res = await fetch("https://nextjs-blog-psi-two-58.vercel.app/api/blogs");
   const jsonData = await res.json();
 
   const selected = jsonData.blogs.find(

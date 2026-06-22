@@ -3,7 +3,7 @@ import { Blog } from "../api/blogs/route";
 
 async function Page() {
 
-  const res = await fetch('http://localhost:3000/api/blogs')
+  const res = await fetch('https://nextjs-blog-psi-two-58.vercel.app/api/blogs')
 
   const jsonData = await res.json();
 
