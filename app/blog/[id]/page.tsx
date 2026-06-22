@@ -1,58 +1,39 @@
-import { Blog } from "@/app/api/blogs/route";
+import { getBlogs } from "@/app/api/blogs/data";
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-
-type PageProps = {
-  params: Promise<{ id: string }>;
-};
 
 export async function generateMetadata({
   params,
-}: PageProps): Promise<Metadata> {
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
   const { id } = await params;
+  const blogs = await getBlogs();
+  const blog = blogs.find((b) => b.id.toString() === id);
 
-  const res = await fetch("https://nextjs-blog-psi-two-58.vercel.app/api/blogs");
-  const jsonData = await res.json();
-
-  const selected = jsonData.blogs.find(
-    (b: Blog) => b.id.toString() === id
-  );
-
-  if (!selected) {
-    return {
-      title: "Blog Not Found",
-    };
-  }
+  if (!blog) return { title: "Not found" };
 
   return {
-    title: selected.title,
-    description: selected.detail,
+    title: blog.title,
+    description: blog.detail,
   };
 }
 
-async function Page({ params }: PageProps) {
+async function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
+  const blogs = await getBlogs();
+  const blog = blogs.find((b) => b.id.toString() === id);
 
-  const res = await fetch("https://nextjs-blog-psi-two-58.vercel.app/api/blogs");
-  const jsonData = await res.json();
-
-  const selected = jsonData.blogs.find(
-    (b: Blog) => b.id.toString() === id
-  );
-
-  if (!selected) {
-    notFound();
-  }
+  if (!blog) notFound();
 
   return (
-    <div>
-      <h1>{selected.title}</h1>
-      <p>{selected.detail}</p>
-
-      <Link href="/blog">
-        Back
-      </Link>
+    <div className="max-w-2xl mx-auto px-6 py-10">
+      <h1 className="text-2xl font-medium text-gray-900 dark:text-white mb-5">
+        {blog.title}
+      </h1>
+      <p className="text-[15px] text-gray-700 dark:text-gray-300 leading-relaxed">
+        {blog.detail}
+      </p>
     </div>
   );
 }
