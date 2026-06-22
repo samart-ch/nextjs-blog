@@ -4,7 +4,7 @@ export type Blog = {
   detail: string;
 };
 
-const blogs: Blog[] = [
+export const blogs: Blog[] = [
   {
     id: 1,
     title: "Blog title 1",
