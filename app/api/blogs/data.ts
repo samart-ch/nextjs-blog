@@ -10,27 +10,27 @@ export type Blog = {
 const blogs: Blog[] = [
   {
     id: 1,
-    title: "Building Scalable Web Applications with Next.js",
+    title: "Building Scalable Systems with Next.js",
     detail:
-      "Learn how to build fast, scalable, and SEO-friendly web applications using Next.js and modern tools.",
-    category: "Technology",
+      "Learn how to architect fast, scalable, and SEO-friendly web platforms using Next.js and modern tooling.",
+    category: "Architecture",
     date: "May 12, 2025",
     featured: true,
   },
   {
     id: 2,
-    title: "Design Principles for Better User Experience",
+    title: "Designing AI-Powered Product Experiences",
     detail:
-      "Explore the key design principles that help create intuitive and engaging user experiences.",
-    category: "Design",
+      "Explore how AI features, prompts, and interface patterns can work together in modern products.",
+    category: "AI UX",
     date: "May 8, 2025",
   },
   {
     id: 3,
-    title: "Mindfulness Habits for a Better You",
+    title: "Security Practices for Modern Web Apps",
     detail:
-      "Simple daily habits that can improve your focus, reduce stress, and bring more balance to your life.",
-    category: "Lifestyle",
+      "Simple but effective security habits that help protect APIs, auth flows, and production deployments.",
+    category: "Security",
     date: "May 5, 2025",
   },
 ];
